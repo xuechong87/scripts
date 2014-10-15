@@ -1,0 +1,98 @@
+/* ace admin timeline 控件改造*/
+
+.timeline-container:not(.timeline-style2) .timeline-container:not(.timeline-style3) .timeline-indicator {
+	opacity:1;
+	border-radius:100%;
+	display:inline-block;
+	font-size:16px;
+	height:36px;
+	line-height:30px;
+	width:36px;
+	text-align:center;
+	text-shadow:none !important;
+	padding:0;
+	cursor:default;
+	border:3px solid #FFF !important
+}/*这一条应该在ace.min.css中加入 在此处加入其实是没有效果的*/
+
+
+.timeline-style3:before {
+	display:none
+}
+.timeline-style3 .timeline-item {
+	padding-bottom:22px;
+	margin-bottom:0;
+	float: left;
+	display: inline;
+}
+.timeline-style3 .timeline-item:last-child {
+	padding-bottom:0;
+	max-width: 180px;
+}
+.timeline-style3 .timeline-item:before {
+	content:"";
+	display:block;
+	position:absolute;
+	left:60px;
+	top: 8px;
+	bottom:-5px;
+	border-width:0;
+	background-color:#DDD;
+	width: 120px;
+	max-height: 2px;
+}
+.timeline-style3 .timeline-item:last-child:before {
+	display:none
+}
+.timeline-style3 .timeline-item:first-child:before {
+	display:block
+}
+.timeline-style3 .timeline-item .transparent .widget-header {
+	background-color:transparent !important
+}
+.timeline-style3 .timeline-item .transparent.widget-box {
+	background-color:transparent !important;
+	border-left:none !important
+}
+.timeline-style3 .timeline-info {
+	width:0px;
+	float: none;
+}
+.timeline-style3 .timeline-indicator {
+	font-size:0;
+	height:12px;
+	line-height:12px;
+	width:12px;
+	border-width:1px !important;
+	background-color:#FFFFFF !important;
+	position:absolute;
+	left:55px;
+	top:3px;
+	opacity:1;
+	border-radius:100%;
+	display:inline-block;
+	padding:0
+}
+.timeline-style3 .timeline-date {
+	display:inline-block;
+	width:72px;
+	text-align:right;
+	margin-right: -75px;
+	color: #777;
+	margin-top: 20px;
+}
+.timeline-style3 .timeline-item .widget-box {
+	margin-left: 0px;
+	margin-top: 5px;
+	width: 120px;
+	text-align: center;
+}
+.timeline-style3 .timeline-label {
+	width:75px;
+	text-align:center;
+	margin-left:0;
+	margin-bottom:10px;
+	text-align:right;
+	color:#666;
+	font-size:14px
+}
