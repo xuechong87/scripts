@@ -5,7 +5,7 @@ Created on 2014年8月29日
 '''
 
 if __name__ == '__main__':
-    path = 'C:\Users\Administrator\Desktop\hongbao.sql'
+    path = ''
     open(path)
     resultStr = 'StringBuilder sql = new StringBuilder();\n'
     warp = lambda x :'sql.append("' + x.replace('"', '\\"').replace('\n',' ') + '");\n'
