@@ -5,11 +5,10 @@ Created on 2014年8月29日
 '''
 
 if __name__ == '__main__':
-    path = ''
+    path = 'C:\Users\Administrator\Desktop\hongbao.sql'
     open(path)
-    result = 'StringBuilder sql = new StringBuilder();\n'
+    resultStr = 'StringBuilder sql = new StringBuilder();\n'
     warp = lambda x :'sql.append("' + x.replace('"', '\\"').replace('\n',' ') + '");\n'
-    # for line in open(path).readlines():
-    #    result = result + warp(line)
-    result = reduce(lambda r,c : r + warp(c),open(path).readlines(),result)
-    print (result)
+    resultStr = reduce(lambda result,cur : result + warp(cur),open(path).readlines(),resultStr)
+    print (resultStr)
+    input("")
