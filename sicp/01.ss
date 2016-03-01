@@ -58,3 +58,26 @@
 (/ (+ 5 (+ 4 (- 2 (- 3 (+ 6 (/ 4 5))))))
    (* 3 (* (- 6 2) (- 2 7))))
 
+
+(define (factor x)
+  (if (= x 1)
+      1
+      (* x (factor (- x 1) ))
+  ))
+
+(factor 2)
+
+(define (fact x )
+  (define (iter product counter)
+    (if (> counter x)
+        product
+        (iter (* counter product)
+              (+ counter 1)
+              )
+        )
+    )
+  
+  (iter 1 1)
+ )
+(fact 6)
+
