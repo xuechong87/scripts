@@ -1,10 +1,10 @@
-namespace: main/views
+namespace: main/views/${moduleName}
 destfile:${moduleName}View.js
 define(function(require, exports, module){
 	
 	var Mustache = require('mustache');
     Mustache.tags = ["<%", "%>"];
-    var Model = require("../models/${moduleName}Model");
+    var Model = require("../../models/${moduleName}/${moduleName}Model");
     
 	var ThisView = Backbone.View.extend({
         el: "body",

@@ -3,6 +3,6 @@ destfile:${moduleName}.js
 define(function(require, exports, module){
 	"use strict";
     
-    var App = require("../views/${moduleName}View");
+    var App = require("../views/${moduleName}/${moduleName}View");
     new App();
 });

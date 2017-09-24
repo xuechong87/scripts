@@ -7,7 +7,7 @@ $ python createBackbone.py moduleName
 '''
 import sys
 import os
-moduleNameInner = "test1"
+moduleNameInner = "myplan"
 
 tplList = ["apptpl","modeltpl","viewtpl"]
 

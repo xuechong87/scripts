@@ -1,4 +1,4 @@
-namespace: main/models
+namespace: main/models/${moduleName}
 destfile:${moduleName}Model.js
 define(function(require, exports, module){
     var ThisModel;
