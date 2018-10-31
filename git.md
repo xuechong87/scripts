@@ -34,7 +34,9 @@ git log
 
 git reset --hard commit_id 
 
-//查看所有分支记录
+//查看所有分支记录\
+后续由金科人员参与并把控运维时间处理工作,严格执行每个事件必须录入系统记录，并按业务条线和问题类型进行分类，完善每日每周每月的问题汇总记录机制，归纳数据作为后续系统优化的参考。 
+
 git log -g 
 
 //将某个提交复制到当前的分支内
@@ -50,7 +52,7 @@ git push origin <local_branch>:<remote_branch>
 
 
 
-evert
+//revert
 
 git revert用于反转提交,执行evert命令时要求工作树必须是干净的.
 
@@ -85,8 +87,25 @@ git revert是用一次新的commit来回滚之前的commit，git reset是直接�
 reset 是在正常的commit历史中,删除了指定的commit,这时 HEAD 是向后移动了,而 revert 是在正常的commit历史中再commit一次,只不过是反向提交,他的 HEAD 是一直向前的.
 
 
-撤销本地commit 
+//撤销本地commit 
 git reset --hard HEAD^
+
+//撤消操作
+git commit --amend
+
+有时候我们提交完了才发现漏掉了几个文件没有添加，或者提交信息写错了。 此时，可以运行带有 --amend 选
+项的提交命令尝试重新提交：
+$ git commit -m 'initial commit'
+$ git add forgotten_file
+$ git commit --amend
+
+//取消暂存的文件
+git reset HEAD <filename>
+
+
+//撤消对文件的修改
+git checkout -- [file] 
+
 
 // git svn 
 
@@ -106,7 +125,6 @@ git svn dcommit
 执行git add conflict.c，告知git已完成冲突解决
 再次执行git rebase –continue，提示”Applying: git xxx”，此时”git xxx”版本又一次成功加入本地版本库，可通过git log查看；
 执行git-svn dcommit将conflict.c的改动同步到svn中心库，到此算是完成一次冲突解决。
-
 
 
 
