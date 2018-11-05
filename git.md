@@ -1,3 +1,26 @@
+//增加到暂存区
+git add (*)
+
+//提交到repo
+git commit -m <comment> (-a 全部提交)
+
+//查看暂存区状态
+git status (-v 查看文件详情)
+
+//推送到远程仓库
+git push <repoName> <branchName>
+
+
+git diff  <filepath> 工作区与暂存区比较
+
+git diff HEAD <filepath> 工作区与HEAD ( 当前工作分支) 比较
+
+git diff --staged 或 --cached  <filepath> 暂存区与HEAD比较
+
+git diff <branchName> <filepath>  当前分支的文件与branchName 分支的文件进行比较
+
+git diff <commit_id> <filepath> 与某一次提交进行比较
+
 //查看远程分支
 git branch -a
 
@@ -128,6 +151,7 @@ git svn dcommit
 
 
 
+
 ///git submodule
 
 //增加一个子模块
@@ -139,3 +163,5 @@ git submodule init
 
 //更新子模块代码
 git submodule update
+
+
