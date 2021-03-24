@@ -1,0 +1,12 @@
+ 启动参数配置
+
+-Dcom.sun.management.jmxremote
+-Dcom.sun.management.jmxremote.port=1099 
+-Dcom.sun.management.jmxremote.rmi.port=1099
+-Dcom.sun.management.jmxremote.ssl=false 
+-Dcom.sun.management.jmxremote.authenticate=false 
+-Djava.rmi.server.hostname=192.168.2.25
+
+
+找到$JAVA_HOME/jre/lib/management/jmxremote.password.template 
+复制成jmxremote.password 打开最下面的两行注释
