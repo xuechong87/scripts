@@ -5,3 +5,4 @@
 *.war
 *.ear
 *.ss~
+.DS_Store
