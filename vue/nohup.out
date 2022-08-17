@@ -1,0 +1,30 @@
+npm ERR! code ENOENT
+npm ERR! syscall open
+npm ERR! path /Users/xuechong/Desktop/github/scripts/vue/package.json
+npm ERR! errno -2
+npm ERR! enoent ENOENT: no such file or directory, open '/Users/xuechong/Desktop/github/scripts/vue/package.json'
+npm ERR! enoent This is related to npm not being able to find a file.
+npm ERR! enoent 
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/xuechong/.npm/_logs/2022-08-17T01_25_00_302Z-debug.log
+npm ERR! code ENOENT
+npm ERR! syscall open
+npm ERR! path /Users/xuechong/Desktop/github/scripts/vue/package.json
+npm ERR! errno -2
+npm ERR! enoent ENOENT: no such file or directory, open '/Users/xuechong/Desktop/github/scripts/vue/package.json'
+npm ERR! enoent This is related to npm not being able to find a file.
+npm ERR! enoent 
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/xuechong/.npm/_logs/2022-08-17T01_27_46_553Z-debug.log
+npm ERR! code ENOENT
+npm ERR! syscall open
+npm ERR! path /Users/xuechong/Desktop/github/scripts/vue/package.json
+npm ERR! errno -2
+npm ERR! enoent ENOENT: no such file or directory, open '/Users/xuechong/Desktop/github/scripts/vue/package.json'
+npm ERR! enoent This is related to npm not being able to find a file.
+npm ERR! enoent 
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/xuechong/.npm/_logs/2022-08-17T01_28_43_983Z-debug.log
