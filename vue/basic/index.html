@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="./vue.js"></script>
+	<style type="text/css">
+		.bo{
+			border: gray 1px solid;
+			margin: 15px;
+		}
+	</style>
+</head>
+<body>
+	<div id="content" class="bo">
+		<h1>{{h1}}</h1>
+	</div>
+	<div id="Computed" class="bo">
+		<h1>{{h1}}</h1>
+		<div>我们可以将同一函数定义为一个方法而不是一个计算属性。两种方式的最终结果确实是完全相同的。然而，不同的是计算属性是基于它们的响应式依赖进行缓存的。只在相关响应式依赖发生改变时它们才会重新求值。这就意味着只要 message 还没有发生改变，多次访问 reversedMessage 计算属性会立即返回之前的计算结果，而不必再次执行函数。</div>
+		<div>{{ message.split('').reverse().join('') }}</div>
+		<div>{{ computedAttr }}</div>
+		<div>{{ computedMethod() }}</div>
+		<button v-on:click="click1()">计算属性与计算方法</button>
+		<div></div>
+		<div></div>
+		<button @click="click1">计算属性与监听属性</button>
+	</div>
+</body>
+<script type="text/javascript">
+	var data = { h1: '这是标题' };
+
+	var vm = new Vue({
+		el:"#content",//要渲染的目标 等同于document.getElementById('content')
+		data: data
+	});
+
+	var com = new Vue({
+		el:"#Computed",
+		data: {h1:'计算属性',message:'展示内容'},
+		//computed计算属性的
+		computed: {
+		    // 计算属性的 getter
+		    computedAttr: function () {
+		      // `this` 指向 vm 实例
+		      // return this.message.split('').reverse().join('')
+		      return Date.now();
+		    },
+		    holemsg:function(){
+		    	return Date.now();
+		    }
+	  	},
+	  	methods:{
+	  		//计算方法
+	  		computedMethod:function () {
+		      // `this` 指向 vm 实例
+		      // return this.message.split('').reverse().join('')
+		      return Date.now();
+		    },
+		    click1:function(){
+		    	this.h1 = '改变内容' + Date.now();
+		    }
+	  	}
+	});
+
+	// setInterval(function(){
+	// 	var imgs = document.getElementsByTagName('img');
+	// 	for (let index = 0; index < imgs.length; index++) {
+	// 	    imgs[index].parentNode.removeChild(imgs[index]);
+	// 	}
+	// },1000);
+
+</script>
+</html>
