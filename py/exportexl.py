@@ -16,8 +16,8 @@ import pandas as pd # 导入pandas库
 conn2 = pymysql.connect(
     host='172.26.3.121',      # 数据库主机地址
     user='root',          # 数据库用户名
-    password='vffcmMCkEUr',    # 数据库密码
-    database='elcube_hbf_dev',      # 数据库名称
+    password='',    # 数据库密码
+    database='',      # 数据库名称
     charset='utf8',# 字符编码
     port=3306   
 )

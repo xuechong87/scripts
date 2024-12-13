@@ -1,6 +1,8 @@
 #coding:utf-8
 import pymysql
 import pandas as pd # 导入pandas库      
+
+destFile = '/Users/xuechong/Desktop/output.xlsx'
 conn2 = pymysql.connect(
     host='172.26.3.121',      # 数据库主机地址
     user='root',          # 数据库用户名
@@ -24,12 +26,12 @@ if __name__ == '__main__':
         group_concat( case card_key 
 		when '{card_key}' then json_extract(card_content,'$.{card_content}')
 	    end ) as {card_key}_{card_content}
-        ,'''
+        ,'''    
         sql = '''
         select
         {selectquery}
         from nk_doc_i i 
-        where doc_id = '845649f5-40285dbd-0184-564ae629-0001'
+        where doc_id in (select  doc_id from nk_doc_h where DOC_TYPE = 'FX01')
         group by doc_id 
         '''
 
@@ -64,8 +66,12 @@ if __name__ == '__main__':
         df = pd.DataFrame(list(results), columns=columns)
         
         # 导出到Excel文件
-        df.to_excel('/Users/xuechong/Desktop/output.xlsx', index=False)
-        print("数据已成功导出到Excel文件")
+        
+        df.to_excel(destFile, index=False)
+        # 打印总行数
+        
+        print("总导出行数:", len(df))
+        print("数据已成功导出到Excel文件:" + destFile)
 
     except Exception as e:
         print("Error:", e)
