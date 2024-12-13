@@ -14,18 +14,17 @@ INSERT INTO `test`.`group_test` (`id`, `type`, `value_title`, `value_content`) V
 INSERT INTO `test`.`group_test` (`id`, `type`, `value_title`, `value_content`) VALUES ('6', 'b', '指标C', '2CCC');
 
 
-select 
-	type,
-	group_concat( case value_title 
-		when '指标A' then value_content
-	end ) as 指标A,
-    group_concat( case value_title 
-		when '指标B' then value_content
-	end ) as 指标B,
-    group_concat( case value_title 
-		when '指标C' then value_content
-	end ) as 指标C
-    
-from group_test t 
+SELECT 
+    type,
+    COALESCE(GROUP_CONCAT(CASE value_title 
+        WHEN '指标A' THEN value_content 
+        END ), '无数据') AS 指标A,
+    COALESCE(GROUP_CONCAT(CASE value_title 
+        WHEN '指标B' THEN value_content 
+        END ), '无数据') AS 指标B,
+    COALESCE(GROUP_CONCAT(CASE value_title 
+        WHEN '指标C' THEN value_content 
+        END ), '无数据') AS 指标C
+FROM group_test t 
 -- where type = 'a'
-group by `type`
+GROUP BY `type`
