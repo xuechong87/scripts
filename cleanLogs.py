@@ -11,21 +11,14 @@ def cleanDir(_dirpath):
 			for _fileName in _filenames:
 				_fullName = os.path.join(_dirpath,_fileName)
 				_match = lambda x : re.compile(x).match(_fileName)
-				if(_match("^\w*\.log$") or _match("^\w*\.log\.([^\.]*)$")):
+				if(_match("^.*\.log$") or _match("^.*\.log\.([^\.]*)$")):
 					print(_fullName)
-			pass
-
-		if(_dirnames):
-			for _dirName in _dirnames:
-				cleanDir(os.path.join(_dirpath,_dirName))
-				pass
-
-			pass
+					os.remove(_fullName)
 
 if __name__ == '__main__':
 	try:
-		cleanDir("D:/")
-	except Exception, e:
+		cleanDir("/Users/xuechong/Desktop/hb")
+	except Exception as e:
 		print(e)
 	
 
