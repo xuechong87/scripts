@@ -6,3 +6,4 @@
 *.ear
 *.ss~
 .DS_Store
+.idea
