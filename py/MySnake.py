@@ -1,3 +1,4 @@
+#coding=utf-8
 from functools import wraps
 
 import pygame
@@ -11,11 +12,17 @@ WIDTH = 10
 HEIGHT = 10
 PIC_UNIT = 20
 
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
+
 def print_shape(shape):
     print('------------------print Shape start------------------')
-    for i in reversed(range(len(shape))):
+    for i in range(len(shape)):
         for j in range(len(shape[i])):
-            if(shape[i][j]==0):
+            if shape[i][j]==0:
                 print('□ ' ,end='')
             else:
                 print('■ ',end='')
@@ -37,32 +44,35 @@ class BaseGround:
         self.food = Vector2(x, y)
         pass
 
-
+#描述器(Descriptor)
 class SnakeProxy:
     def __init__(self ,func):
         self._func = func
+        # self.func_name = func.__name__ 这样不好
 
-    def __set_name__(self, owner, name):
-        self.name = name
+    # 设置调用方法名
+    def __set_name__(self, owner, func_name):
+        self.func_name = func_name
 
+    #类方法
     def __get__(self, instance, owner):
         if instance is None:
             return self
         else:
             def wrapper(*args, **kwargs):
-                print(f"Proxying for {self.name}...")
+                print(f"Proxying for {self.func_name}...")
                 instance.lock.acquire()
                 result =  self._func(instance, *args, **kwargs)  # 传递 instance
                 instance.lock.release()
                 return result
             return wrapper
-
+    #函数
     def __call__(self, func):
         self._func = func
         return self
 
-class MySnake:
 
+class MySnake:
 
     def __init__(self, base_ground: BaseGround):
         self.lock = threading.RLock()
@@ -71,7 +81,6 @@ class MySnake:
         self.body = [self.head]
         self.ground = base_ground
         self.is_dead = False
-
 
     @SnakeProxy
     def move(self):
@@ -112,37 +121,51 @@ class MySnake:
         print_shape(ground_copy)
         print('=============== printSnake END ===============')
 
+    def draw(self, surface):
+        snake_color =GREEN
+        if self.is_dead:
+            snake_color = WHITE
+
+        vector_to_rect = lambda v: pygame.Rect(v.x * PIC_UNIT, v.y * PIC_UNIT, PIC_UNIT, PIC_UNIT)
+        for i in range(len(self.body)):
+            pygame.draw.rect(surface, snake_color, vector_to_rect(self.body[i]), 0)
+        pygame.draw.rect(surface, RED, vector_to_rect(self.ground.food), 0)
+        pygame.draw.rect(surface, BLUE, (0,0,WIDTH * PIC_UNIT, HEIGHT * PIC_UNIT), 2)
+
     def check_direct(self,new_direction):
         if self.direction == new_direction:
             return False
         if self.direction + new_direction == Vector2(0, 0):
             return False
         return True
+
     @SnakeProxy
     def turn_left(self):
         new_direction = Vector2(-1, 0)
         if self.check_direct(new_direction):
             self.direction = new_direction
         pass
+
     @SnakeProxy
     def turn_right(self):
         new_direction = Vector2(1, 0)
         if self.check_direct(new_direction):
             self.direction = new_direction
         pass
+
     @SnakeProxy
     def turn_up(self):
-        new_direction = Vector2(0, 1)
-        if self.check_direct(new_direction):
-            self.direction = new_direction
-        pass
-    @SnakeProxy
-    def turn_down(self):
         new_direction = Vector2(0, -1)
         if self.check_direct(new_direction):
             self.direction = new_direction
         pass
 
+    @SnakeProxy
+    def turn_down(self):
+        new_direction = Vector2(0, 1)
+        if self.check_direct(new_direction):
+            self.direction = new_direction
+        pass
 
 if  __name__ == '__main__':
     ground = BaseGround()
