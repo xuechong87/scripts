@@ -1,6 +1,6 @@
 import pygame
-import MySnake
-from MySnake import WIDTH,HEIGHT, PIC_UNIT
+import MySnake2 as MySnake
+from MySnake2 import WIDTH,HEIGHT, PIC_UNIT
 
 pygame.init()
 
@@ -10,19 +10,16 @@ running = True
 
 ground = MySnake.BaseGround()
 snake = MySnake.MySnake(ground)
+snake.speed = 0.01
 
 width, height = (WIDTH + 10 ) * PIC_UNIT, (HEIGHT + 10) * PIC_UNIT
 screen = pygame.display.set_mode((width, height))
 
 move_interval = 800
-last_move_time = pygame.time.get_ticks()
 
 while running:
     clock.tick(60)
-    current_time = pygame.time.get_ticks()
-    print('tick')
-
-
+    # print('tick')
 
     screen.fill((0, 0, 0))
 
@@ -42,10 +39,8 @@ while running:
             if event.key == pygame.K_DOWN:
                 snake.turn_down()
     
-    if current_time - last_move_time > move_interval:
-        snake.move()
-        snake.print_snake()
-        last_move_time = current_time
+    snake.move()
+    # snake.print_snake()
 
     snake.draw(screen)
     pygame.display.flip()

@@ -37,6 +37,7 @@ class BaseGround:
         self.food = None
         self.ground_data = [[0 for i in range(self.width)] for j in range(self.height)]
         self.create_new_food()
+    
 
     def create_new_food(self):
         x = random.randint(0, WIDTH - 1)
@@ -81,10 +82,11 @@ class MySnake:
         self.body = [self.head]
         self.ground = base_ground
         self.is_dead = False
+        self.speed = 0.01
 
     @SnakeDescriptor
     def move(self):
-        new_head = self.head + self.direction
+        new_head = self.head + self.direction*self.speed
         self.check_dead(new_head)
         if self.is_dead:
             return
